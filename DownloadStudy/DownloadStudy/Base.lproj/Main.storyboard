@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QXS-D7-A0t">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="LEg-Op-WhX">
+            <objects>
+                <navigationController id="QXS-D7-A0t" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SiG-DD-AbU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tUX-mW-DKt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYv-6r-ZMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1039" y="206"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syh-48-lmG">
+                                <rect key="frame" x="70" y="84" width="460" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4ya-Ra-K60"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="普通下载"/>
+                                <connections>
+                                    <segue destination="O1O-Xj-khd" kind="push" id="Ngf-iE-tR9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gQ-ic-J6O">
+                                <rect key="frame" x="70" y="154" width="460" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gdY-ZM-iLu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="断点续传"/>
+                                <connections>
+                                    <segue destination="tfg-6u-FOh" kind="push" id="ObK-Bl-CwC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Syh-48-lmG" secondAttribute="trailing" constant="50" id="TSC-jW-6q5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4gQ-ic-J6O" secondAttribute="trailing" constant="50" id="bmc-dU-WWp"/>
+                            <constraint firstItem="4gQ-ic-J6O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="gMy-lW-xcM"/>
+                            <constraint firstItem="4gQ-ic-J6O" firstAttribute="top" secondItem="Syh-48-lmG" secondAttribute="bottom" constant="20" id="kyb-U3-VE2"/>
+                            <constraint firstItem="Syh-48-lmG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="r4R-Om-BTU"/>
+                            <constraint firstItem="Syh-48-lmG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="waf-5M-GX7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="b0f-Hm-QRE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-233" y="135"/>
+        </scene>
+        <!--普通下载-->
+        <scene sceneID="DqL-eF-yOY">
+            <objects>
+                <viewController id="O1O-Xj-khd" customClass="NormalDownload" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hy8-Bd-qD6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mnr-Zb-Gh0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k05-Hh-Sbq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="普通下载" id="gXa-9n-yEZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HfO-8u-djL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="493" y="78"/>
+        </scene>
+        <!--断点续传-->
+        <scene sceneID="W9L-ve-EKX">
+            <objects>
+                <viewController id="tfg-6u-FOh" customClass="SpecialDownload" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="agx-HW-FhO"/>
+                        <viewControllerLayoutGuide type="bottom" id="257-JE-bZs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iss-uZ-7Az">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="断点续传" id="aM9-uc-Rv5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ncP-9l-SSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="542" y="495"/>
+        </scene>
+    </scenes>
+</document>
