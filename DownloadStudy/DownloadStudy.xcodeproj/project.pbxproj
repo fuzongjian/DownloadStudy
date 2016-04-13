@@ -17,6 +17,8 @@
 		504B3A411CBDF0E500F7CD5B /* DownloadStudyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 504B3A401CBDF0E500F7CD5B /* DownloadStudyUITests.m */; };
 		504B3A501CBDF66700F7CD5B /* NormalDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 504B3A4F1CBDF66700F7CD5B /* NormalDownload.m */; };
 		504B3A531CBDF67A00F7CD5B /* SpecialDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 504B3A521CBDF67A00F7CD5B /* SpecialDownload.m */; };
+		504B3A601CBE10FC00F7CD5B /* DACircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 504B3A5F1CBE10FC00F7CD5B /* DACircularProgressView.m */; };
+		504B3A631CBE179D00F7CD5B /* CountBytes.m in Sources */ = {isa = PBXBuildFile; fileRef = 504B3A621CBE179D00F7CD5B /* CountBytes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,10 @@
 		504B3A4F1CBDF66700F7CD5B /* NormalDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalDownload.m; sourceTree = "<group>"; };
 		504B3A511CBDF67A00F7CD5B /* SpecialDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialDownload.h; sourceTree = "<group>"; };
 		504B3A521CBDF67A00F7CD5B /* SpecialDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialDownload.m; sourceTree = "<group>"; };
+		504B3A5E1CBE10FC00F7CD5B /* DACircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DACircularProgressView.h; sourceTree = "<group>"; };
+		504B3A5F1CBE10FC00F7CD5B /* DACircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DACircularProgressView.m; sourceTree = "<group>"; };
+		504B3A611CBE179D00F7CD5B /* CountBytes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountBytes.h; sourceTree = "<group>"; };
+		504B3A621CBE179D00F7CD5B /* CountBytes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountBytes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +121,10 @@
 				504B3A4F1CBDF66700F7CD5B /* NormalDownload.m */,
 				504B3A511CBDF67A00F7CD5B /* SpecialDownload.h */,
 				504B3A521CBDF67A00F7CD5B /* SpecialDownload.m */,
+				504B3A611CBE179D00F7CD5B /* CountBytes.h */,
+				504B3A621CBE179D00F7CD5B /* CountBytes.m */,
 				504B3A241CBDF0E500F7CD5B /* Main.storyboard */,
+				504B3A5D1CBE10FC00F7CD5B /* DACircularProgress */,
 				504B3A271CBDF0E500F7CD5B /* Assets.xcassets */,
 				504B3A291CBDF0E500F7CD5B /* LaunchScreen.storyboard */,
 				504B3A2C1CBDF0E500F7CD5B /* Info.plist */,
@@ -148,6 +157,15 @@
 				504B3A421CBDF0E500F7CD5B /* Info.plist */,
 			);
 			path = DownloadStudyUITests;
+			sourceTree = "<group>";
+		};
+		504B3A5D1CBE10FC00F7CD5B /* DACircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				504B3A5E1CBE10FC00F7CD5B /* DACircularProgressView.h */,
+				504B3A5F1CBE10FC00F7CD5B /* DACircularProgressView.m */,
+			);
+			path = DACircularProgress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,9 +299,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				504B3A501CBDF66700F7CD5B /* NormalDownload.m in Sources */,
+				504B3A601CBE10FC00F7CD5B /* DACircularProgressView.m in Sources */,
 				504B3A231CBDF0E500F7CD5B /* ViewController.m in Sources */,
 				504B3A201CBDF0E500F7CD5B /* AppDelegate.m in Sources */,
 				504B3A531CBDF67A00F7CD5B /* SpecialDownload.m in Sources */,
+				504B3A631CBE179D00F7CD5B /* CountBytes.m in Sources */,
 				504B3A1D1CBDF0E500F7CD5B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DownloadStudy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xingbida.DownloadStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,6 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DownloadStudy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.xingbida.DownloadStudy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
