@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYv-6r-ZMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1039" y="206"/>
+            <point key="canvasLocation" x="-1731" y="116"/>
         </scene>
         <!--下载-->
         <scene sceneID="tne-QT-ifu">
@@ -56,10 +56,24 @@
                                     <segue destination="tfg-6u-FOh" kind="push" id="ObK-Bl-CwC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhB-zZ-myL">
+                                <rect key="frame" x="70" y="224" width="460" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="44x-cP-Ufc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="AFN_Download"/>
+                                <connections>
+                                    <segue destination="KNE-3j-Xmg" kind="push" id="qNY-VV-iao"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="IhB-zZ-myL" firstAttribute="top" secondItem="4gQ-ic-J6O" secondAttribute="bottom" constant="20" id="Fqo-Mt-a6G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Syh-48-lmG" secondAttribute="trailing" constant="50" id="TSC-jW-6q5"/>
+                            <constraint firstItem="IhB-zZ-myL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="UhN-48-Eda"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IhB-zZ-myL" secondAttribute="trailing" constant="50" id="Ze1-ll-DtT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4gQ-ic-J6O" secondAttribute="trailing" constant="50" id="bmc-dU-WWp"/>
                             <constraint firstItem="4gQ-ic-J6O" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="gMy-lW-xcM"/>
                             <constraint firstItem="4gQ-ic-J6O" firstAttribute="top" secondItem="Syh-48-lmG" secondAttribute="bottom" constant="20" id="kyb-U3-VE2"/>
@@ -71,7 +85,69 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-233" y="135"/>
+            <point key="canvasLocation" x="-873" y="135"/>
+        </scene>
+        <!--AFN_Download-->
+        <scene sceneID="Jfz-TH-shU">
+            <objects>
+                <viewController id="KNE-3j-Xmg" customClass="AFNDownloadController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P45-DE-INc"/>
+                        <viewControllerLayoutGuide type="bottom" id="gE9-Bf-t8o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4MJ-E6-53h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UoS-g1-FAL">
+                                <rect key="frame" x="30" y="84" width="540" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rnh-92-bDP">
+                                <rect key="frame" x="20" y="510" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="4iJ-Nd-lr7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="开始"/>
+                                <connections>
+                                    <action selector="startDownload:" destination="KNE-3j-Xmg" eventType="touchUpInside" id="c67-eG-ga9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOT-2d-sDu">
+                                <rect key="frame" x="300" y="510" width="280" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KpQ-wI-dKd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="暂停"/>
+                                <connections>
+                                    <action selector="pauseDownload:" destination="KNE-3j-Xmg" eventType="touchUpInside" id="wgC-Yb-NlR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nOT-2d-sDu" firstAttribute="leading" secondItem="Rnh-92-bDP" secondAttribute="trailing" id="6Tb-eQ-6wr"/>
+                            <constraint firstItem="gE9-Bf-t8o" firstAttribute="top" secondItem="Rnh-92-bDP" secondAttribute="bottom" constant="50" id="74Y-ax-MFm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nOT-2d-sDu" secondAttribute="trailing" id="7GF-SD-3dz"/>
+                            <constraint firstItem="nOT-2d-sDu" firstAttribute="height" secondItem="Rnh-92-bDP" secondAttribute="height" id="7LA-t8-ccN"/>
+                            <constraint firstItem="UoS-g1-FAL" firstAttribute="top" secondItem="P45-DE-INc" secondAttribute="bottom" constant="20" id="McR-QL-2g3"/>
+                            <constraint firstItem="nOT-2d-sDu" firstAttribute="width" secondItem="Rnh-92-bDP" secondAttribute="width" id="XQk-ml-FPX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UoS-g1-FAL" secondAttribute="trailing" constant="10" id="cH2-of-p9N"/>
+                            <constraint firstItem="gE9-Bf-t8o" firstAttribute="top" secondItem="nOT-2d-sDu" secondAttribute="bottom" constant="50" id="cId-jV-aSC"/>
+                            <constraint firstItem="Rnh-92-bDP" firstAttribute="leading" secondItem="4MJ-E6-53h" secondAttribute="leadingMargin" id="nMX-Fh-5U6"/>
+                            <constraint firstItem="UoS-g1-FAL" firstAttribute="leading" secondItem="4MJ-E6-53h" secondAttribute="leadingMargin" constant="10" id="xq6-Ph-Nh3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="AFN_Download" id="Qkk-k8-sSE"/>
+                    <connections>
+                        <outlet property="downloadProgress" destination="4MJ-E6-53h" id="HcS-UD-R6s"/>
+                        <outlet property="progress" destination="UoS-g1-FAL" id="tXZ-Oc-NfK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8DI-9v-f1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-696" y="152"/>
         </scene>
         <!--普通下载-->
         <scene sceneID="DqL-eF-yOY">
@@ -91,7 +167,7 @@
                                     <constraint firstAttribute="height" constant="40" id="wVc-2a-F3Q"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkB-C4-XVv" customClass="DACircularProgressView">
@@ -159,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HfO-8u-djL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493" y="78"/>
+            <point key="canvasLocation" x="487" y="-332"/>
         </scene>
         <!--断点续传-->
         <scene sceneID="W9L-ve-EKX">
@@ -230,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncP-9l-SSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="544" y="784"/>
+            <point key="canvasLocation" x="696" y="72"/>
         </scene>
     </scenes>
 </document>
