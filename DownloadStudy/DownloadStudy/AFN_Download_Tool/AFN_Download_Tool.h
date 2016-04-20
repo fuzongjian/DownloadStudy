@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 typedef void(^DownloadProgress) (CGFloat progress,CGFloat total,CGFloat current);
 typedef void(^DownloadSuccess) (NSURLSessionDownloadTask * task,NSString * path);
+typedef void(^CompletionState) (BOOL state,NSString * message);
 typedef void(^DownloadFail) (NSURLSessionDownloadTask * task,NSError * error);
 @interface AFN_Download_Tool : NSObject
 + (NSURLSessionDownloadTask *)downloadFileWithUrl:(NSString *)url DownloadProgress:(DownloadProgress)progress DownloadSuccess:(DownloadSuccess)success DownloadFail:(DownloadFail)fail;

@@ -10,9 +10,11 @@
 
 @implementation AFN_Download_Tool
 + (NSURLSessionDownloadTask *)downloadFileWithUrl:(NSString *)url DownloadProgress:(DownloadProgress)progress DownloadSuccess:(DownloadSuccess)success DownloadFail:(DownloadFail)fail{
+    // 首先打开网络监控
+    [self MonitorNetState];
     // 1、 设置请求
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    // 2、句柄的初始化
+    // 2、初始化
     NSURLSessionConfiguration * configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     // 3、开始下载
@@ -30,7 +32,17 @@
     
         //下载完成之后将文件的路径返回去
         success(task,[filePath path]);
-        fail(task,error);
+        
+        //如果失败则返回失败原因
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"NetState"] boolValue]) {
+            NSError * customError = [NSError errorWithDomain:@"网络异常" code:404 userInfo:nil];
+            fail(task,customError);
+        }else if(999 != abs(error.code)){
+            NSError * customerror = [NSError errorWithDomain:@"请求超时" code:404 userInfo:nil];
+            fail(task,customerror);
+        }
+        
+        
     }];
     return task;
 }
@@ -52,8 +64,15 @@
      *
      */
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-
+        if (status == AFNetworkReachabilityStatusUnknown || AFNetworkReachabilityStatusNotReachable) {
+            [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:@"NetState"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }else{
+            [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:@"NetState"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
     }];
+ 
 
 }
 @end
