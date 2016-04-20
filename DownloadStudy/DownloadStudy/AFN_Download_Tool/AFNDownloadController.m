@@ -23,13 +23,19 @@
     NSString * path = @"http://wind4app-bdys.oss-cn-hangzhou.aliyuncs.com/CMD_MarkDown.zip";
     
     NSURLSessionDownloadTask * task =[AFN_Download_Tool downloadFileWithUrl:path DownloadProgress:^(CGFloat progress, CGFloat total, CGFloat current) {
-          dispatch_async(dispatch_get_main_queue(), ^{
-              self.progress.progress = progress;
-          });
-    } DownloadSuccess:^(NSURLSessionDownloadTask *task, NSString *path) {
-
-    } DownloadFail:^(NSURLSessionDownloadTask *task, NSError *error) {
+        //  下载的线程重新开辟（非主线程）
+            NSLog(@"当前线程---%@",[NSThread currentThread]);
         
+        //  回到主线程更新进度条
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            self.progress.progress = progress;
+        });
+        
+        
+        
+        
+    }DownloadCompletion:^(BOOL state, NSString *message, NSString *filePath) {
+         NSLog(@"%@",message);
     }];
     _task = task;
    

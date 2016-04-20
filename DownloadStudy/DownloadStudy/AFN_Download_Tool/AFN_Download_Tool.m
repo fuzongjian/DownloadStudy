@@ -9,9 +9,7 @@
 #import "AFN_Download_Tool.h"
 
 @implementation AFN_Download_Tool
-+ (NSURLSessionDownloadTask *)downloadFileWithUrl:(NSString *)url DownloadProgress:(DownloadProgress)progress DownloadSuccess:(DownloadSuccess)success DownloadFail:(DownloadFail)fail{
-    // 首先打开网络监控
-    [self MonitorNetState];
++ (NSURLSessionDownloadTask *)downloadFileWithUrl:(NSString *)url DownloadProgress:(DownloadProgress)progress DownloadCompletion:(CompletionState)completion{
     // 1、 设置请求
     NSURLRequest * request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     // 2、初始化
@@ -29,20 +27,21 @@
         return [NSURL fileURLWithPath:path];//转化为文件路径
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
         //如果下载的是压缩包的话，可以在这里进行解压
-    
-        //下载完成之后将文件的路径返回去
-        success(task,[filePath path]);
-        
-        //如果失败则返回失败原因
-        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"NetState"] boolValue]) {
-            NSError * customError = [NSError errorWithDomain:@"网络异常" code:404 userInfo:nil];
-            fail(task,customError);
-        }else if(999 != abs(error.code)){
-            NSError * customerror = [NSError errorWithDomain:@"请求超时" code:404 userInfo:nil];
-            fail(task,customerror);
+          NSLog(@"----%@---%d---%@",error.domain,error.code,error);
+        //下载成功
+        if (error == nil) {
+            completion(YES,@"下载完成",[filePath path]);
+        }else{//下载失败的时候，只列举判断了两种错误状态码
+            NSString * message = nil;
+            if (error.code == - 1005) {
+                message = @"网络异常";
+            }else if (error.code == -1001){
+                message = @"请求超时";
+            }else{
+                message = @"未知错误";
+            }
+            completion(NO,message,nil);
         }
-        
-        
     }];
     return task;
 }
@@ -52,7 +51,7 @@
 + (void)start:(NSURLSessionDownloadTask *)task{
     [task resume];
 }
-#pragma mark --- 监控当前网络状态(WiFi状态可以下载)
+#pragma mark --- 监控当前网络状态(WiFi状态可以下载) 实践证明这个网络监控有延缓，
 + (void)MonitorNetState{
     AFNetworkReachabilityManager * manager = [AFNetworkReachabilityManager sharedManager];
     [manager startMonitoring];
@@ -64,10 +63,12 @@
      *
      */
     [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusUnknown || AFNetworkReachabilityStatusNotReachable) {
+        if (status == AFNetworkReachabilityStatusNotReachable) {
+            NSLog(@"no");
             [[NSUserDefaults standardUserDefaults] setObject:@0 forKey:@"NetState"];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }else{
+            NSLog(@"yes");
             [[NSUserDefaults standardUserDefaults] setObject:@1 forKey:@"NetState"];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }
