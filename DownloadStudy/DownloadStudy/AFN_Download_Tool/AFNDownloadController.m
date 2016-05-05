@@ -27,12 +27,9 @@
             NSLog(@"当前线程---%@",[NSThread currentThread]);
         
         //  回到主线程更新进度条
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             self.progress.progress = progress;
         });
-        
-        
-        
         
     }DownloadCompletion:^(BOOL state, NSString *message, NSString *filePath) {
          NSLog(@"%@",message);
